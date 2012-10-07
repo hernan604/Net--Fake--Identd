@@ -16,8 +16,9 @@ sub process_request {
     my ( $self ) = @_;
     while (<STDIN>) {
         warn "$_";
-        s/\r?\n$//;
-        print "$_ : USERID : UNIX : " . $self->config->{ ident_user}; # basic echo
+        my $var = $_;
+        $var =~ s/\r?\n$//;
+        print "$var : USERID : UNIX : " . $self->config->{ ident_user} . "\n"; # basic echo
         last if /quit/i;
     }
 }
