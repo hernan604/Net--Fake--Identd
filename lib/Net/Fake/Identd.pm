@@ -15,6 +15,7 @@ has config => (
 sub process_request {
     my ( $self ) = @_;
     while (<STDIN>) {
+        warn "$_";
         s/\r?\n$//;
         print "$_ : USERID : UNIX : " . $self->config->{ ident_user}; # basic echo
         last if /quit/i;
@@ -31,13 +32,15 @@ Net::Fake::Identd - Define any ident you want and start the daemon.
 
   my $o = Net::Fake::Identd->new();
   $o->config({ ident_user => 'nobody' });
-  isa_ok($o, 'Net::Fake::Identd');
 
   $o->run(
     port      => 113,  #run on high ports without root.
     user      => 'nobody',
     group     => 'nobody',
+    log_level => 4,
   );
+  #for more options for $o->run, see:
+  #http://search.cpan.org/~rhandom/Net-Server-2.006/lib/Net/Server.pod
 
 =head1 DESCRIPTION
 
