@@ -7,7 +7,7 @@ use base qw(Net::Server);
 has config => (
   is => 'rw',
   isa => 'Any',
-  default => sub{ 
+  default => sub{
     ident_user => 'nobody',
   },
 );
@@ -47,24 +47,12 @@ Net::Fake::Identd - Define any ident you want and start the daemon.
 
 Use this module if you need a quick handy fake identd server.
 
-=head1 USAGE
-
-
-
-=head1 BUGS
-
-
-
-=head1 SUPPORT
-
-
-
 =head1 AUTHOR
 
     Hernan Lopes
     CPAN ID: HERNAN
     HERNAN
-    hernanlopes in gmail 
+    hernanlopes in gmail
 
 =head1 COPYRIGHT
 
